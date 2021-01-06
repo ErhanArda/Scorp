@@ -1,7 +1,6 @@
 <template>
     <div>
         <v-app-bar app flat>
-        <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
         <v-container class="mx-auto py-0">
             <v-row align="center">
             <v-img
@@ -44,6 +43,8 @@
             </v-col>
             </v-row>
         </v-container>
+                <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
+
     </v-app-bar>
 
     <NavigationDrawer :links="links" :drawer="drawer" />

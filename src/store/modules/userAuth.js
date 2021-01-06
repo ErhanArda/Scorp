@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import router from "../../router"
 export default {
     state: {
         token: localStorage.getItem("token") || null,
@@ -44,6 +44,7 @@ export default {
         destroyToken(context) {
             localStorage.clear();
             context.commit("destroyToken");
+            router.push("/");
             },
         retrieveToken(context, credentials) {
             context.commit('setAuthLoading', true)
