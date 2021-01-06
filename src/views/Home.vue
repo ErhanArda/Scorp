@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Navbar />
     <v-main>
       <div class="home">
         <h1>Home</h1>
@@ -11,13 +10,10 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
 
 export default {
   name: "Home",
-  components:{
-    Navbar
-  },
+
   methods: {
     about() {
       this.$router.push("/about");
