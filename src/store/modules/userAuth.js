@@ -30,6 +30,9 @@ export default {
         },
         email(state){
             return state.email
+        },
+        getLoader(state) {
+            return state.isLoginLoading
         }
     },
 
@@ -43,7 +46,7 @@ export default {
             context.commit("destroyToken");
             },
         retrieveToken(context, credentials) {
-
+            context.commit('setAuthLoading', true)
             return new Promise((resolve, reject) => {
                 axios
                     .post(`https://reqres.in/api/login`, {
@@ -51,6 +54,7 @@ export default {
                         password: credentials.password,
                     })
                     .then((response) => {
+                        context.commit('setAuthLoading', false)
                         const token = response.data.token;
                         localStorage.setItem("token", token);
                         context.commit("retrieveToken", token);
@@ -60,6 +64,7 @@ export default {
                         axios.defaults.headers.common["Authorization"] = token;
                     })
                     .catch((error) => {
+                        context.commit('setAuthLoading', false)
                         console.log(error);
                         reject(error);
                         this.error = true;

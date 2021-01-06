@@ -54,25 +54,26 @@
           </v-form>
         </v-card-text>
         <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-btn
-            color="primary"
-            @click.prevent="login()"
-            :disabled="!isValid"
-            block
-            >Giriş Yap ve Devam Et
-            <v-progress-circular
-              indeterminate
-              color="amber"
-            ></v-progress-circular>
-          </v-btn>
-        </v-card-actions>
       </v-card>
+      <v-card-actions>
+        <v-btn
+          color="primary"
+          @click.prevent="login()"
+          :disabled="!isValid"
+          block
+          >Giriş Yap ve Devam Et
+          <v-progress-circular
+            v-if="getLoader"
+            indeterminate
+            color="amber"
+          ></v-progress-circular>
+        </v-btn>
+      </v-card-actions>
     </v-dialog>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import LanguageSelect from "./LanguageSelect";
 export default {
   components: {
@@ -112,6 +113,9 @@ export default {
         password: this.password,
       });
     },
+  },
+  computed: {
+    ...mapGetters(["getLoader"]),
   },
 };
 </script>
