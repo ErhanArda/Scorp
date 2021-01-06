@@ -11,6 +11,7 @@
 <script>
 import Home from "./views/Home";
 import About from "./views/About";
+import ContactPage from './views/ContactPage'
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer'
 
