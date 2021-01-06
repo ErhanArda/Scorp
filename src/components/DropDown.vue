@@ -1,7 +1,7 @@
 <template>
     <div class="text-center">
         <v-select
-        :label="email"
+        :label="getEmail"
         :items="items"
         dense
         hide-details
@@ -27,11 +27,12 @@ export default {
     },
     methods: {
         logOut() {
-        this.$store.dispatch("destroyToken");
+        this.$store.commit("destroyToken");
+        // this.$store.dispatch("resetState");
         },
     },
     computed:{
-         ...mapGetters(["loggedIn", "email"]),
+        ...mapGetters(["loggedIn", "getEmail"]),
     },
     watch: {
         selectedItem() {

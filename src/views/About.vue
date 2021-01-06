@@ -19,18 +19,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  name: "Scorp",
-  computed: {
-    ...mapGetters(["loggedIn", "email"]),
-    info() {
-      if (this.email) {
-        let userName = "Eve Holt";
-        return userName;
-      }
-    },
-  },
+
 };
 </script>

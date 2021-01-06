@@ -1,11 +1,27 @@
 import axios from "axios";
 import router from "../../router"
+
+// const getDefaultState = () => {
+//     return {
+//         token: localStorage.getItem("token") || null,
+//         isLoginLoading: false,
+//         email: "",
+//         userName:'Eve',
+//         userSurname:"Holt"
+//     };
+// };
+
+
 export default {
     state: {
         token: localStorage.getItem("token") || null,
         isLoginLoading: false,
-        email:"",
+        email: "",
+        userName:'Eve',
+        userSurname:"Holt"
     },
+    // state : getDefaultState(),    
+
     mutations: {
         retrieveToken(state, token) {
             state.token = token;
@@ -16,9 +32,12 @@ export default {
         setAuthLoading: (state, status) => {
             state.isLoginLoading = status;
         },
-        setEmail: (state,email) => {
+        setEmail: (state, email) => {
             state.email = email
-        }
+        },
+        // resetState(state) {
+        //     Object.assign(state, getDefaultState());
+        // },
     },
     getters: {
         loggedIn(state) {
@@ -28,11 +47,20 @@ export default {
                 return false;
             }
         },
-        email(state){
+        getEmail(state) {
             return state.email
         },
         getLoader(state) {
             return state.isLoginLoading
+        },
+        fullName(state){
+            return `${state.userName} ${state.userSurname} `
+        },
+        setName(state){
+            return state.userName 
+        },
+        setSurname(state){
+            return state.userSurname 
         }
     },
 
@@ -45,7 +73,7 @@ export default {
             localStorage.clear();
             context.commit("destroyToken");
             router.push("/");
-            },
+        },
         retrieveToken(context, credentials) {
             context.commit('setAuthLoading', true)
             return new Promise((resolve, reject) => {
@@ -59,7 +87,7 @@ export default {
                         const token = response.data.token;
                         localStorage.setItem("token", token);
                         context.commit("retrieveToken", token);
-                        context.commit("setEmail",credentials.email)
+                        context.commit("setEmail", credentials.email)
                         console.log("token: ", token);
                         resolve(response);
                         axios.defaults.headers.common["Authorization"] = token;
