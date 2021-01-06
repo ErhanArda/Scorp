@@ -33,22 +33,14 @@
                     {{ link.text }}
                 </v-btn></router-link
                 >
-            </div>
-            <v-col sm="2" md="2" lg="2" xl="2">
-                <v-select
-                v-model="select"
-                :items="items"
-                item-text="language"
-                label="Select"
-                persistent-hint
-                return-object
-                single-line
-                >
-                </v-select>
-            </v-col>
-            <v-col cols="1" class="ml-1">
-                <!-- loggedIn ? "Login" : none -->
+            </div>            
+
+                <LanguageSelect/>
+            <v-col cols="1"  v-if="!loggedIn">
                 <LoginModal/>
+            </v-col>
+            <v-col cols="2" class="ml-1" v-else>
+                <DropDown/>
             </v-col>
             </v-row>
         </v-container>
@@ -62,26 +54,23 @@
 import {mapGetters} from 'vuex'
 import NavigationDrawer from "./NavigationDrawer";
 import LoginModal from "./LoginModal"
+import LanguageSelect from "./LanguageSelect"
+import DropDown from "./DropDown"
 export default {
     components: {
         NavigationDrawer,
-        LoginModal
+        LoginModal,
+        LanguageSelect,
+        DropDown
     },
     data() {
         return {
         drawer: false,
-        select: { language: "Eng" },
-
-
-        // links: [
-        //     { text: "Home", route: "/" },
-        //     { text: "About", route: "/about" },
-        // ],
-        items: [{ language: "Eng" }, { language: "Tur" }],
         };
     },
+    
     computed:{
-        ...mapGetters(["links"])
+        ...mapGetters(["links","loggedIn"])
     }
 };
 </script>
