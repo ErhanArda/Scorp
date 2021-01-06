@@ -4,6 +4,7 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    <Footer/>
   </v-app>
 </template>
 
@@ -11,6 +12,7 @@
 import Home from "./views/Home";
 import About from "./views/About";
 import Navbar from "./components/Navbar";
+import Footer from './components/Footer'
 
 export default {
   name: "App",
@@ -18,7 +20,8 @@ export default {
   components: {
     Home,
     About,
-    Navbar
+    Navbar,
+    Footer
   },
 };
 </script>
