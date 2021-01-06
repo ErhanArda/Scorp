@@ -8,8 +8,8 @@
       no-gutters
     >
       <v-btn
-        v-for="link in links"
-        :key="link"
+        v-for="(link,index) in links"
+        :key="index"
         color="white"
         text
         rounded
@@ -31,16 +31,8 @@
 import {mapGetters} from 'vuex'
 
   export default {
-    data: () => ({
-      icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
-      ],
-    }),
     computed:{
-                ...mapGetters(["links"])
+            ...mapGetters(["links"])
     }
   }
 </script>
