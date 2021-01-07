@@ -6,7 +6,7 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         name="name"
-                        label="Name"
+                        :label="$t('main.contactName')"
                         v-model="user.name"
                         :rules="nameRules"
                         outlined
@@ -17,7 +17,7 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         name="surname"
-                        label="Surname"
+                        :label="$t('main.contactSurname')"
                         v-model="user.surname"
                         :rules="SurNameRules"
                         outlined
@@ -30,7 +30,7 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         name="email"
-                        label="Email"
+                        :label="$t('main.contactEmail')"
                         v-model="user.email"
                         :rules="emailRules"
                         outlined
@@ -43,7 +43,7 @@
                         v-model="user.mobilePhone"
                         :rules="mobilePhoneRules"
                         name="cellPhone"
-                        label="Cell Phone"
+                        :label="$t('main.cellPhone')"
                         v-mask="'###########'"
                         outlined
                         dense
@@ -56,13 +56,12 @@
                     item-text="name"
                     item-value="id"
                     flat
-                    label="Countries"
+                    :label="$t('main.countries')"
                     solo-inverted
                 ></v-autocomplete>
                 <v-textarea
                     color="cyan"
-                    label="Message"
-                    name="message"
+                    :label="$t('main.cUs')"
                     :rules="messageRules"
                     v-model="user.message"
                     dense
@@ -74,7 +73,7 @@
                     :disabled="enableSignUp()"
                     color="primary"
                     block
-                    >Send</v-btn
+                    >{{$t('main.send')}}</v-btn
                 >
             </v-form>
         </div>
@@ -128,7 +127,7 @@ export default {
             (v) => (v && v.length <= 11) ,
         ],
         messageRules: [
-            (v) => !!v || "Please enter your message",
+            (v) => !!v || $t('main.cUs'),
             (v) => (v && v.length > 10) || "Message must be more than 10 characters",
         ],
         };
