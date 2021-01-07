@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
-          Login
+          {{ $t("main.login") }}
         </v-btn>
         <v-spacer></v-spacer>
       </template>
@@ -15,7 +15,7 @@
                 <v-col> <LanguageSelect /></v-col>
                 </v-row> -->
           <v-col md="4">
-            <h4>Login</h4>
+            <h4>{{ $t("main.login") }}</h4>
           </v-col>
           <v-col sm="2" class="ml-auto"> </v-col>
           <LanguageSelect />
@@ -61,7 +61,8 @@
           @click.prevent="login()"
           :disabled="!isValid"
           block
-          >LOGIN
+        >
+          {{ $t("main.login") }}
           <v-progress-circular
             v-if="getLoader"
             indeterminate

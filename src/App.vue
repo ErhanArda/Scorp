@@ -12,7 +12,7 @@
 import Home from "./views/Home";
 import About from "./views/About";
 import ContactPage from './views/ContactPage'
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from './components/Footer'
 
 export default {
