@@ -61,7 +61,7 @@
           @click.prevent="login()"
           :disabled="!isValid"
           block
-          >Giriş Yap ve Devam Et
+          >LOGIN
           <v-progress-circular
             v-if="getLoader"
             indeterminate

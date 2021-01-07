@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-            <v-form ref="form" v-model="user.isValid" lazy-validation>
+            <v-form ref="form" v-model="isValid" lazy-validation>
                 <v-alert color="error" :value="err" dark>Try Again</v-alert>
                 <v-row align-center justify-center>
                     <v-col cols="12" md="6">
@@ -41,40 +41,40 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="user.mobilePhone"
+                        :rules="mobilePhoneRules"
                         name="cellPhone"
                         label="Cell Phone"
+                        v-mask="'###########'"
                         outlined
                         dense
                     ></v-text-field>
                     </v-col>
                 </v-row>
-                <v-select
-                    v-model="user.selectedCountries"
+                <v-autocomplete
+                    v-model="user.country_code"
                     :items="countries"
                     item-text="name"
                     item-value="id"
-                    name="Countries"
+                    flat
                     label="Countries"
-                    outlined
-                    dense
-                >
-                </v-select>
-                <!-- <v-textarea color="cyan" outlined label="Adres Detayı"></v-textarea> -->
+                    solo-inverted
+                ></v-autocomplete>
                 <v-textarea
                     color="cyan"
-                    label="Adres Detayı"
-                    name="address"
-                    v-model="user.address"
+                    label="Message"
+                    name="message"
+                    :rules="messageRules"
+                    v-model="user.message"
                     dense
                     outlined
                     required
                 ></v-textarea>
                 <v-btn
-                    @click="register"
+                    @click="sendData"
                     :disabled="enableSignUp()"
                     color="primary"
                     block
-                    >Save</v-btn
+                    >Send</v-btn
                 >
             </v-form>
         </div>
@@ -82,20 +82,20 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import axios from 'axios'
+
 export default {
     data() {
         return {
         err: false,
+        isValid: false,
         user:{
             name: "",
             surname: "",
             email:  "",
-            countries:null,
-            address: null,
-            selectedCountries: null,
-            isValid: false,
-            terms: false,
-            mobilePhone: null,
+            mobilePhone: "",
+            country_code: "",
+            message: "",
         },
         countries:[
             { id: "TR", name: "Turkey" },
@@ -123,25 +123,48 @@ export default {
             (v) => !!v || "Please enter your e-mail",
             (v) => /.+@.+\..+/.test(v) || "Enter a valid email",
         ],
+        mobilePhoneRules: [
+            (v) => !!v || "Please enter your cell phone number",
+            (v) => (v && v.length <= 11) ,
+        ],
+        messageRules: [
+            (v) => !!v || "Please enter your message",
+            (v) => (v && v.length > 10) || "Message must be more than 10 characters",
+        ],
         };
     },
     methods: {
         enableSignUp() {
         let testEmail = /.+@.+\..+/.test(this.user.email);
         if (
-            this.user.name.length > 0 &&
-            this.user.surname.length > 0 &&
+            this.user.name !== "" &&
+            this.user.surname !== "" > 0 &&
             this.user.mobilePhone !== null &&
+            this.user.country_code !== null &&
+            this.user.message.length > 10 &&
             testEmail
         ) {
             return false;
         }
         return true;
         },
-        register() {
-        if (this.valid()) {
-        alert("Hello")
-        }}
+        sendData(){
+            axios.post('contactMessages',this.user).then(contact_message => {
+                console.log("contact_message",contact_message)
+                if(contact_message.status === 201){
+                    this.$router.push("/")
+                    alert(`Thank you ${this.user.name} :) Your message has reached us!`)
+                }
+                this.user = {
+                    name: "",
+                    surname: "",
+                    email:  "",
+                    mobilePhone: "",
+                    country_code: "",
+                    message: "",
+                }
+            })
+        }
     },
     computed:{
         ...mapGetters(["loggedIn", "getEmail","setName","setSurname"]),
