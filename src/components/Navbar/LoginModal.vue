@@ -26,7 +26,7 @@
             <v-text-field
               prepend-icon="mdi-account"
               name="email"
-              label="E-Posta"
+              :label="$t('main.contactEmail')"
               type="text"
               v-model="email"
               :rules="emailRules"
@@ -39,7 +39,7 @@
             <v-text-field
               prepend-icon="mdi-lock"
               name="password"
-              label="Şifre"
+              :label="$t('main.password')"
               :type="value ? 'password' : 'text'"
               v-model="password"
               :rules="passwordRules"
@@ -92,12 +92,12 @@ export default {
       required: (value) => !!value || "Required.",
 
       emailRules: [
-        (v) => !!v || "E-mail adresinizi giriniz.",
-        (v) => /.+@.+/.test(v) || "Geçerli bir E-Posta adresi giriniz",
+        (v) => !!v,
+        (v) => /.+@.+/.test(v) ,
       ],
       passwordRules: [
-        (v) => !!v || "Şifrenizi giriniz",
-        (v) => (v && v.length >= 5) || "Şifreniz 5 karakterden fazla olmalıdır",
+        (v) => !!v ,
+        (v) => (v && v.length >= 5) ,
       ],
     };
   },

@@ -124,24 +124,24 @@ export default {
         show: false,
 
         nameRules: [
-            (v) => !!v || "Please enter your name ",
-            (v) => (v && v.length <= 10) || " Name must be less than 10 characters",
+            (v) => !!v ,
+            (v) => (v && v.length <= 10),
         ],
         SurNameRules: [
-            (v) => !!v || "Please enter your surname",
-            (v) => (v && v.length <= 10) || "Surname must be less than 10 characters",
+            (v) => !!v,
+            (v) => (v && v.length <= 10),
         ],
         emailRules: [
-            (v) => !!v || "Please enter your e-mail",
-            (v) => /.+@.+\..+/.test(v) || "Enter a valid email",
+            (v) => !!v ,
+            (v) => /.+@.+\..+/.test(v),
         ],
         mobilePhoneRules: [
-            (v) => !!v || "Please enter your cell phone number",
+            (v) => !!v ,
             (v) => (v && v.length <= 11) ,
         ],
         messageRules: [
-            (v) => !!v || "Please enter your message",
-            (v) => (v && v.length > 10) || "Message must be more than 10 characters",
+            (v) => !!v ,
+            (v) => (v && v.length > 10),
         ],
         };
     },
