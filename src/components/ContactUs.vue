@@ -52,7 +52,7 @@
                 </v-row>
                 <v-autocomplete
                     v-model="user.country_code"
-                    :items="countries"
+                    :items="$t('main.countriesSelect')"
                     item-text="name"
                     item-value="id"
                     flat
@@ -127,7 +127,7 @@ export default {
             (v) => (v && v.length <= 11) ,
         ],
         messageRules: [
-            (v) => !!v || $t('main.cUs'),
+            (v) => !!v || "Please enter your message",
             (v) => (v && v.length > 10) || "Message must be more than 10 characters",
         ],
         };
