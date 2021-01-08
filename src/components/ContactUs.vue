@@ -76,18 +76,31 @@
                     >{{$t('main.send')}}</v-btn
                 >
             </v-form>
+            <v-dialog
+            v-model="listingDialog"
+            persistent
+            overlay-opacity="0.75"
+            max-width="360px">
+            <Warning :userName="userName"/>
+        </v-dialog>
         </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import axios from 'axios'
+import Warning from './Warning'
 
 export default {
-    data() {
+    components:{ 
+        Warning
+        },
+        data() {
         return {
         err: false,
         isValid: false,
+        listingDialog: false,
+        userName:"",
         user:{
             name: "",
             surname: "",
@@ -151,8 +164,9 @@ export default {
             axios.post('contactMessages',this.user).then(contact_message => {
                 console.log("contact_message",contact_message)
                 if(contact_message.status === 201){
-                    this.$router.push("/")
-                    alert(`Thank you ${this.user.name} :) Your message has reached us!`)
+                    console.log(contact_message)
+                                this.succes;
+
                 }
                 this.user = {
                     name: "",
@@ -167,6 +181,16 @@ export default {
     },
     computed:{
         ...mapGetters(["loggedIn", "getEmail","setName","setSurname"]),
+
+        async succes() {
+        this.listingDialog = true;
+        this.userName = this.user.name
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve((this.listingDialog = true)), 2000);
+        });
+        await promise;
+        this.$router.push("/");
+        },
     },
     mounted(){
         if(this.loggedIn){
