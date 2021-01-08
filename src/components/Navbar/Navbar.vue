@@ -24,7 +24,7 @@
                         /> -->
             <div id="nav">
                 <router-link
-                v-for="(link, i) in links"
+                v-for="(link, i) in $t('main.links')"
                 :key="i"
                 :to="`${link.route}`"
                 class="text-decoration-none"
@@ -43,11 +43,9 @@
             </v-col>
             </v-row>
         </v-container>
-                <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
-
+        <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer" />
     </v-app-bar>
-
-    <NavigationDrawer :links="links" :drawer="drawer" />
+    <NavigationDrawer  :drawer="drawer" />
 </div>
 </template>
 
@@ -71,7 +69,7 @@ export default {
     },
     
     computed:{
-        ...mapGetters(["links","loggedIn"])
+        ...mapGetters(["loggedIn"])
     }
 };
 </script>

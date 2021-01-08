@@ -1,27 +1,76 @@
 {
   "main": {
     "welcome": "Hoş geldin {visitor} !!",
-    "login":"Giriş Yap",
-    "mainText":"Lorem Ipsum nedir? Lorem Ipsum, baskı ve dizgi endüstrisinin basit bir metnidir. Lorem Ipsum, bilinmeyen bir matbaacının bir dizi çeşidini alıp bir tür numune kitabı yapmak için karıştırdığı 1500'lerden beri endüstrinin standart kukla metni olmuştur. Sadece beş yüzyıl boyunca hayatta kalmadı, aynı zamanda elektronik dizgiye sıçradı ve esasen değişmeden kaldı. 1960'larda Lorem Ipsum pasajlarını içeren Letraset sayfalarının yayınlanmasıyla ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri de dahil olmak üzere masaüstü yayıncılık yazılımlarıyla popüler hale geldi.",
-    "aboutTitle":"Hakkımızda",
-    "aboutText":"Dünyanın en samimi sosyal medyası.",
-    "contactName":  "İsim",
-    "contactSurname":"Soyisim",
-    "contactEmail":"E-Posta",
-    "contactPassword":"Parola",
-    "cellPhone":"Cep Telefonu",
-    "countries":"Ülkeler",
-    "cUs":"Lütfen mesajınızı giriniz",
+    "login": "Giriş Yap",
+    "mainText": "Lorem Ipsum nedir? Lorem Ipsum, baskı ve dizgi endüstrisinin basit bir metnidir. Lorem Ipsum, bilinmeyen bir matbaacının bir dizi çeşidini alıp bir tür numune kitabı yapmak için karıştırdığı 1500'lerden beri endüstrinin standart kukla metni olmuştur. Sadece beş yüzyıl boyunca hayatta kalmadı, aynı zamanda elektronik dizgiye sıçradı ve esasen değişmeden kaldı. 1960'larda Lorem Ipsum pasajlarını içeren Letraset sayfalarının yayınlanmasıyla ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri de dahil olmak üzere masaüstü yayıncılık yazılımlarıyla popüler hale geldi.",
+    "aboutTitle": "Hakkımızda",
+    "aboutText": "Dünyanın en samimi sosyal medyası.",
+    "contactName": "İsim",
+    "contactSurname": "Soyisim",
+    "contactEmail": "E-Posta",
+    "contactPassword": "Parola",
+    "cellPhone": "Cep Telefonu",
+    "countries": "Ülkeler",
+    "cUs": "Lütfen mesajınızı giriniz",
+    "contactAlert": "Teşekkürler {visitor} :) Mesajınız bize ulaştı!",
     "send": "Gönder",
-    "countriesSelect":[
-      { "id": "TR", "name": "Türkiye" },
-      { "id": "US", "name": "Amerika Birleşik Devletleri" },
-      { "id": "GB", "name": "Birleşik Krallık" },
-      { "id": "DE", "name": "Almanya" },
-      { "id": "SE", "name": "İsveç" },
-      { "id": "KE", "name": "Kenya" },
-      { "id": "BR", "name": "Brezilya" },
-      { "id": "ZW", "name": "Zimbabwe" }
-  ]
+    "countriesSelect": [
+      {
+        "id": "TR",
+        "name": "Türkiye"
+      },
+      {
+        "id": "US",
+        "name": "Amerika Birleşik Devletleri"
+      },
+      {
+        "id": "GB",
+        "name": "Birleşik Krallık"
+      },
+      {
+        "id": "DE",
+        "name": "Almanya"
+      },
+      {
+        "id": "SE",
+        "name": "İsveç"
+      },
+      {
+        "id": "KE",
+        "name": "Kenya"
+      },
+      {
+        "id": "BR",
+        "name": "Brezilya"
+      },
+      {
+        "id": "ZW",
+        "name": "Zimbabwe"
+      }
+    ],
+    "links": [
+      {
+        "text": "Scorp",
+        "route": "/"
+      },
+      {
+        "text": "Hakkımızda",
+        "route": "/about"
+      },
+      {
+        "text": "Bize Ulaşın",
+        "route": "/contact"
+      }
+    ],
+    "dropDown": [
+      {
+        "text": "Scorp",
+        "id": 0
+      },
+      {
+        "text": "Çıkış Yap",
+        "id": 1
+      }
+    ]
   }
 }

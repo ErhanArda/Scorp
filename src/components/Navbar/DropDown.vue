@@ -2,7 +2,8 @@
     <div class="text-center">
         <v-select
         :label="getEmail"
-        :items="items"
+        :items=" $t('main.dropDown')"
+        item-value="id"
         dense
         hide-details
         left
@@ -19,10 +20,6 @@ export default {
     data() {
         return {
         selectedItem: "",
-        items: [
-            { text: "Scorp", router: "/" },
-            { text: "Çıkış Yap", router: "/logout" },
-        ],
         };
     },
     methods: {
@@ -36,7 +33,7 @@ export default {
     },
     watch: {
         selectedItem() {
-        if (this.selectedItem === "Çıkış Yap") {
+        if (this.selectedItem === 1 ) {
             this.$store.dispatch("destroyToken");
         }
         },

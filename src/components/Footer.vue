@@ -8,7 +8,7 @@
       no-gutters
     >
       <v-btn
-        v-for="(link,index) in links"
+        v-for="(link,index) in $t('main.links')"
         :key="index"
         color="white"
         text
@@ -28,11 +28,6 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
   export default {
-    computed:{
-            ...mapGetters(["links"])
-    }
   }
 </script>
