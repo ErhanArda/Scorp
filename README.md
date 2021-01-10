@@ -7,6 +7,11 @@ vuex for global state manager ,
 json server for my backend data,
 vuetify for material design,
 A hosted REST-API https://reqres.in/
+login infos
+{
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+}
 ```
 First
 npm install
